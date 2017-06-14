@@ -1,0 +1,9 @@
+<!-- Generated template for the SliderComponent component -->
+<!--<div *ngIf="false">-->
+<div *ngIf="slides">
+  <ion-slides autoplay pager cache effect="cube">
+    <ion-slide *ngFor="let slide of slides | async">
+      <img *ngIf="slide" alt={{slide.alt}} src={{slide.src}}>
+    </ion-slide>
+  </ion-slides>
+</div>
