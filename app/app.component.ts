@@ -58,25 +58,4 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
-
-  // ionViewDidLoad(){
-  //   if(document.body.clientWidth > 767) {
-  //     let menu_content = document.querySelectorAll('ion-nav')[0].className + " menu-content-open";
-  //     let menu = document.querySelectorAll('ion-menu')[0].className + " show-menu";
-  //     document.querySelectorAll('ion-menu')[0].className = menu;
-  //     document.querySelectorAll('ion-nav')[0].className = menu_content;
-  //   }
-  //   else{
-  //     console.log('shorter');
-  //   }
-  // }
-  ionViewDidEnter(){
-    if(document.body.clientWidth > 767) {
-      document.querySelectorAll('ion-menu')[0].classList.add('show-menu');
-      document.querySelectorAll('ion-nav')[0].classList.add('menu-content-open');
-    }
-    else{
-      console.log('shorter');
-    }
-  }
 }
