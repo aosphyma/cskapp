@@ -1,27 +1,22 @@
 <!-- Generated template for the CskarticleComponent component -->
-<div>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>
-        Title
-      </ion-card-title>
-      <ion-row>
-        Subtitle
-      </ion-row>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-row>
-        Files (images)
-      </ion-row>
-      <ion-row>
-        Urls
-      </ion-row>
-      <ion-row>
-        Short description
-      </ion-row>
-      <ion-row>
-        Long description
-      </ion-row>
-    </ion-card-content>
-  </ion-card>
-</div>
+<ion-row align-items-start justify-content-center>
+  <ion-col col-sm-12 col-md-6 col-lg-6 *ngFor="let article of page">
+    <ion-col>
+      <ion-card padding>
+
+        <ion-card-title>
+          <h1> {{ article.title }} </h1>
+          <h6> {{ article.timestamp }}</h6>
+        </ion-card-title>
+
+        <ion-row>
+          <img src="img/advance-card-bttf.png">
+        </ion-row>
+
+        <ion-card-content>
+          <p>{{ article.l_description }}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-col>
+</ion-row>

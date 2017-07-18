@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import {Http, /*RequestMethod, RequestOptions, Headers*/ } from '@angular/http';
+import 'rxjs/Rx';
+
 /**
  * Generated class for the CulturePage page.
  *
@@ -14,11 +17,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CulturePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  articles = [];
+  culture = new Array();
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CulturePage');
+    this.http.get('http://localhost/appcontrollers/adbs.php')
+      .map(res => {
+        return res.json().data;
+      })
+      .subscribe(data => {
+        this.articles = data;
+        for(let it of this.articles){
+          if(it.category === 'culture'){
+            this.culture.push(it);
+          }
+        }
+        // console.log(this.culture);
+      });
   }
 
 }
