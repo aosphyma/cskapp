@@ -16,48 +16,70 @@
 
   <!--<button ion-button secondary menuToggle>Toggle Menu</button>-->
   <ion-grid fixed>
-    <slider [page]="home"></slider>
+    <!--todo slider-->
+    <!--<slider [page]="home"></slider>-->
+
+    <!--<ion-row>-->
+    <!--<ion-col>-->
+    <!--<cskarticle (clickgoToPage)="goToPage($event, 'academy', 'Article')"></cskarticle>-->
+    <!--</ion-col>-->
+    <!--<ion-col>-->
+    <!--<cskarticle></cskarticle>-->
+    <!--</ion-col>-->
+    <!--<ion-col>-->
+    <!--<cskarticle></cskarticle>-->
+    <!--</ion-col>-->
+    <!--&lt;!&ndash;<ion-col>&ndash;&gt;-->
+    <!--&lt;!&ndash;<cskarticle></cskarticle>&ndash;&gt;-->
+    <!--&lt;!&ndash;</ion-col>&ndash;&gt;-->
+    <!--</ion-row>-->
+
     <ion-row>
-      <ion-col>
-        <cskarticle (clickgoToPage)="goToPage($event, 'academy', 'Article')"></cskarticle>
+      <ion-col col-sm-12 col-md-6 col-lg-6 *ngFor="let article of articles">
+        <ion-col>
+          <ion-card padding>
+            <ion-card-header>
+              <ion-card-title >
+                {{ article.category }}
+              </ion-card-title>
+              <ion-row>
+                {{ article.title }}
+              </ion-row>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-row>
+                {{ article.s_description }}
+              </ion-row>
+            </ion-card-content>
+            <ion-row>
+              <ion-col col-9></ion-col>
+              <ion-col col-3>
+                <button ion-button icon-left clear small (click)="gotoReadPage(article.category)">
+                  <ion-icon name="link"></ion-icon>
+                  <div>Read More...</div>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>
       </ion-col>
-      <ion-col>
-        <cskarticle></cskarticle>
-      </ion-col>
-      <ion-col>
-        <cskarticle></cskarticle>
-      </ion-col>
-      <!--<ion-col>-->
-      <!--<cskarticle></cskarticle>-->
+      <!--<ion-col col-sm-12 col-md-6 *ngFor="let article of articles">-->
+      <!--<ion-card>-->
+      <!--<ion-card-header>-->
+      <!--<ion-card-title>-->
+      <!--{{ article.category }}-->
+      <!--</ion-card-title>-->
+      <!--<ion-row>-->
+      <!--{{ article.title }}-->
+      <!--</ion-row>-->
+      <!--</ion-card-header>-->
+      <!--<ion-card-content>-->
+      <!--<ion-row>-->
+      <!--{{ article.s_description }}-->
+      <!--</ion-row>-->
+      <!--</ion-card-content>-->
+      <!--</ion-card>-->
       <!--</ion-col>-->
-    </ion-row>
-    <ion-row>
-      <ion-col *ngFor="let article of articles">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>
-              {{ article.title }}
-            </ion-card-title>
-            <ion-row>
-              {{ article.subtitle }}
-            </ion-row>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-row>
-              {{ article.filepath }}
-            </ion-row>
-            <ion-row>
-              {{ article.url }}
-            </ion-row>
-            <ion-row>
-              {{ article.s_description }}
-            </ion-row>
-            <ion-row>
-              {{ article.l_description }}
-            </ion-row>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

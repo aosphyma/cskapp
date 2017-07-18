@@ -1,6 +1,6 @@
-import { Component/*, Input*/, Output, EventEmitter } from '@angular/core';
+import {Component, Input,/*Output, EventEmitter*/ } from '@angular/core';
 
-/**
+ /**
  * Generated class for the CskarticleComponent component.
  *
  * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
@@ -11,14 +11,10 @@ import { Component/*, Input*/, Output, EventEmitter } from '@angular/core';
   templateUrl: 'cskarticle.html'
 })
 export class CskarticleComponent {
-  @Output('clickgoToPage') goToPage: EventEmitter<any> = new EventEmitter();
-  text: string;
+  @Input('renderPage') page: Array<any>;
+  // @Output('') goToPage: EventEmitter<any> = new EventEmitter();
 
   constructor() {
-    console.log('Hello CskarticleComponent Component');
-    this.text = 'Hello World';
-    // let interval = setInterval(() => {
-    //   this.goToPage.emit('its time');
-    // }, 3000);
+    console.log(this.page);
   }
 }

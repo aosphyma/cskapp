@@ -30,7 +30,6 @@ import { SliderComponent } from '../components/slider/slider';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule/*, AngularFireAuthProvider*/ } from 'angularfire2/auth';
-import { ArticleComponent } from '../components/article/article';
 import { CskarticleComponent } from '../components/cskarticle/cskarticle';
 import { CskfooterComponent } from '../components/cskfooter/cskfooter';
 import { TestdirectiveDirective } from '../directives/testdirective/testdirective';
@@ -76,7 +75,6 @@ const config = {
     SignupformPage,
     GaleryformPage,
     SliderComponent,
-    ArticleComponent,
     CskarticleComponent,
     CskfooterComponent,
     TestdirectiveDirective

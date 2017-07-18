@@ -5,6 +5,10 @@ import { AngularFireDatabase, FirebaseListObservable} from 'angularfire2/databas
 import {Http, /*RequestMethod, RequestOptions, Headers*/ } from '@angular/http';
 import 'rxjs/Rx';
 
+import { AcademyPage } from '../academy/academy';
+import { CulturePage } from '../culture/culture';
+import { SportPage } from '../sport/sport';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -28,8 +32,19 @@ export class HomePage {
       });
   }
 
-  goToPage(event, page:string, arg:string){
-    // this.navCtrl.push()
-    // console.log('now going to page ' + page + ' With an argument ' + arg);
+  gotoReadPage(page:string){
+    switch(page){
+      case 'academy':
+        this.navCtrl.setRoot(AcademyPage);
+        break;
+      case 'culture':
+        this.navCtrl.setRoot(CulturePage);
+        break;
+      case 'sport':
+        this.navCtrl.setRoot(SportPage);
+        break;
+      default:
+        this.navCtrl.setRoot(HomePage);
+    }
   }
 }
