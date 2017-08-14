@@ -17,36 +17,27 @@
   <!--<button ion-button secondary menuToggle>Toggle Menu</button>-->
   <ion-grid fixed>
     <!--todo slider-->
-    <!--<slider [page]="home"></slider>-->
-
-    <!--<ion-row>-->
-    <!--<ion-col>-->
-    <!--<cskarticle (clickgoToPage)="goToPage($event, 'academy', 'Article')"></cskarticle>-->
-    <!--</ion-col>-->
-    <!--<ion-col>-->
-    <!--<cskarticle></cskarticle>-->
-    <!--</ion-col>-->
-    <!--<ion-col>-->
-    <!--<cskarticle></cskarticle>-->
-    <!--</ion-col>-->
-    <!--&lt;!&ndash;<ion-col>&ndash;&gt;-->
-    <!--&lt;!&ndash;<cskarticle></cskarticle>&ndash;&gt;-->
-    <!--&lt;!&ndash;</ion-col>&ndash;&gt;-->
-    <!--</ion-row>-->
-
+    <slider [page]="home"></slider>
     <ion-row>
       <ion-col col-sm-12 col-md-6 col-lg-6 *ngFor="let article of articles">
         <ion-col>
           <ion-card padding>
-            <ion-card-header>
-              <ion-card-title >
+            <ion-card-header id="{{article.category}}" (click)="gotoReadPage(article.category)">
+              <ion-card-title>
                 {{ article.category }}
               </ion-card-title>
-              <ion-row>
-                {{ article.title }}
-              </ion-row>
             </ion-card-header>
             <ion-card-content>
+              <ion-row>
+                <ion-col>
+                  <h2 style="text-align: center;">
+                    {{ article.title }}
+                  </h2>
+                </ion-col>
+              </ion-row>
+              <!--<ion-row>-->
+                <!--<img src="img/advance-card-bttf.png">-->
+              <!--</ion-row>-->
               <ion-row>
                 {{ article.s_description }}
               </ion-row>
@@ -63,23 +54,6 @@
           </ion-card>
         </ion-col>
       </ion-col>
-      <!--<ion-col col-sm-12 col-md-6 *ngFor="let article of articles">-->
-      <!--<ion-card>-->
-      <!--<ion-card-header>-->
-      <!--<ion-card-title>-->
-      <!--{{ article.category }}-->
-      <!--</ion-card-title>-->
-      <!--<ion-row>-->
-      <!--{{ article.title }}-->
-      <!--</ion-row>-->
-      <!--</ion-card-header>-->
-      <!--<ion-card-content>-->
-      <!--<ion-row>-->
-      <!--{{ article.s_description }}-->
-      <!--</ion-row>-->
-      <!--</ion-card-content>-->
-      <!--</ion-card>-->
-      <!--</ion-col>-->
     </ion-row>
   </ion-grid>
 </ion-content>

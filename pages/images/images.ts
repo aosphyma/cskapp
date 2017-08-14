@@ -17,22 +17,18 @@ import 'rxjs/Rx';
 })
 export class ImagesPage {
 
-  data: Array<any>;
-  image1: any;
-  image2: any;
+  images = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad ImagesPage');
-    this.http.get('http://localhost/testDB/gdbs.php') // must start apache (and mysql) server to get it work
+    this.http.get('http://localhost/appcontrollers/gdbs.php')
       .map(res => {
         return res.json().rows;
       })
-      .subscribe(data => {
-        // console.log(data);
-        this.data = data;
+      .subscribe(r => {
+        this.images = r;
       });
   }
 

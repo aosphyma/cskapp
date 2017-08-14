@@ -17,13 +17,14 @@ export class HomePage {
 
   home: FirebaseListObservable<any>;
   articles = [];
+  private downloadURL = 'http://localhost/appcontrollers/adbs.php';
 
   constructor(public navCtrl: NavController, public afb: AngularFireDatabase, public http: Http) {
     this.home = afb.list('/Slides');
   }
 
   ionViewDidLoad() {
-    this.http.get('http://localhost/appcontrollers/adbs.php')
+    this.http.get(this.downloadURL)
       .map(res => {
         return res.json().data;
       })
@@ -35,16 +36,16 @@ export class HomePage {
   gotoReadPage(page:string){
     switch(page){
       case 'academy':
-        this.navCtrl.setRoot(AcademyPage);
+        this.navCtrl.push(AcademyPage);
         break;
       case 'culture':
-        this.navCtrl.setRoot(CulturePage);
+        this.navCtrl.push(CulturePage);
         break;
       case 'sport':
-        this.navCtrl.setRoot(SportPage);
+        this.navCtrl.push(SportPage);
         break;
       default:
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.push(HomePage);
     }
   }
 }
