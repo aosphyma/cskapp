@@ -39,6 +39,7 @@ import { IonicStorageModule } from '@ionic/storage';
 
 import { File } from '@ionic-native/file';
 import { Transfer } from '@ionic-native/transfer';
+import {FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 
@@ -114,6 +115,7 @@ const config = {
     SplashScreen,
     File,
     Transfer,
+    FileTransfer,
     Camera,
     FilePath,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

@@ -1,15 +1,11 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 
-import { HomePage } from '../home/home';
+// import {HomePage} from '../home/home';
 import {Http, RequestMethod, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/Rx';
 
-
-
-
-
-export class Article{
+export class Article {
   category: any;
   title: any;
   subtitle: any;
@@ -17,7 +13,9 @@ export class Article{
   ld: any;
   url: any;
   file: any;
-  constructor(){}
+
+  constructor() {
+  }
 }
 
 /**
@@ -33,7 +31,16 @@ export class Article{
 })
 export class ArticleformPage {
   article: Article = new Article();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private http: Http) {
+  private uploadURL: string = 'http://localhost/appcontrollers/padbs.php';
+  private fileuploadURL: string = 'http://localhost/appcontrollers/fileupload.php';
+  private formData: FormData ;
+
+  // private downloadURL: string = 'http://localhost/appcontrollers/adbs.php';
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public viewCtrl: ViewController,
+              private http: Http) {
   }
 
   ionViewDidLoad() {
@@ -41,17 +48,44 @@ export class ArticleformPage {
     this.viewCtrl.setBackButtonText(this.navParams.get('from'));
   }
 
+  fileEvent(fileInput: any) {
+    this.formData = new FormData();
+    this.formData.append('file', fileInput.target.files[0]);
+    console.log(this.formData.get('file'))
+  }
+
   articleForm() {
-    let headers = new Headers({'Content-type': 'application/json'});
+    if (this.formData.get('file') != null) {
+      this.fileUpload();
+    }
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      // 'Content-type': 'multipart/form-data'
+    });
     let options = new RequestOptions({method: RequestMethod.Post, headers: headers});
-    return this.http.post('http://localhost/appcontrollers/padbs.php', this.article, options)
-      .map( res => {
+    return this.http.post(
+      this.uploadURL,
+      this.article,
+      options)
+      .map(res => {
         return res.json();
       })
       .subscribe(article => {
-        this.article = new Article();
-        this.navCtrl.setRoot(HomePage);
         console.log(article);
+      });
+  }
+
+  fileUpload() {
+    let options = new RequestOptions({method: RequestMethod.Post});
+    return this.http.post(
+      this.fileuploadURL,
+      this.formData,
+      options)
+      .map(res => {
+        return res;
+      })
+      .subscribe(uploadedStatus => {
+        console.log(uploadedStatus.text());
       });
   }
 

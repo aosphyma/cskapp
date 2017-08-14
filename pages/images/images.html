@@ -18,13 +18,12 @@
 
 <ion-content padding class="card-background-page">
 
-  <ion-grid>
-    <ion-row>
-      <ion-col
-        col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3
-        *ngFor="let image of data">
+  <ion-grid fixed>
+    <ion-row align-items-start justify-content-center>
+      <ion-col col-sm-12 col-md-6 col-lg-3 *ngFor="let image of images">
         <ion-card>
-          <div class="card-title-md">{{ image.title }}</div>
+          <img src="http://{{ image.filepath }}">
+          <div class="card-title">{{ image.title }}</div>
           <div class="card-subtitle">{{ image.description }}</div>
         </ion-card>
       </ion-col>
