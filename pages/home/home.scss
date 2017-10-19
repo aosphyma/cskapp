@@ -1,3 +1,23 @@
 page-home {
-
+  #culture{
+    background-color: darkviolet;
+    height: 100px;
+    ion-card-title{
+      color: white;
+    }
+  }
+  #sport{
+    background-color: darkgreen;
+    height: 100px;
+    ion-card-title{
+      color: white;
+    }
+  }
+  #academy{
+    background-color: darkblue;
+    height: 100px;
+    ion-card-title{
+      color: white;
+    }
+  }
 }

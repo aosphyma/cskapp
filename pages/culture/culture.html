@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="culture">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -17,5 +17,7 @@
 
 
 <ion-content padding>
-
+  <ion-grid fixed>
+    <cskarticle [renderPageCol0]="articleSet0" [renderPageCol1]="articleSet1"></cskarticle>
+  </ion-grid>
 </ion-content>

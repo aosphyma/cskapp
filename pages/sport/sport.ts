@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+
+import {Http, RequestMethod, RequestOptions, Headers } from '@angular/http';
+import 'rxjs/Rx';
 
 /**
  * Generated class for the SportPage page.
@@ -14,11 +17,38 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SportPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  articles = [];
+  articleSet0 = [];
+  articleSet1 = [];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SportPage');
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      // 'Content-type': 'multipart/form-data'
+    });
+    let options = new RequestOptions({method: RequestMethod.Post, headers: headers});
+    this.http.post("http://localhost/appcontrollers/adbs.php", {category: 'sport'}, options)
+      .map(res => {
+        return res.json();
+      })
+      .subscribe(data => {
+        this.articles = data;
+        let it = 0;
+        while (it < this.articles.length) {
+          if (typeof this.articles[it] !== 'undefined') {
+            this.articleSet0.push(this.articles[it]);
+          }
+          if ((it + 1) <= this.articles.length) {
+            if (typeof this.articles[it + 1] !== 'undefined') {
+              this.articleSet1.push(this.articles[it + 1]);
+            }
+          }
+          it += 2;
+        }
+      });
   }
 
 }

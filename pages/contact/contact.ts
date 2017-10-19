@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
-
+import { HomePage } from '../home/home'
+import {Http, RequestMethod, RequestOptions, Headers} from '@angular/http';
+import 'rxjs/Rx';
 
 export class Contact{
   name: string|any;
   email: string|any;
   message: string|any;
+  subject: string|any;
   constructor(){}
 }
 
@@ -24,18 +27,49 @@ export class Contact{
 export class ContactPage {
 
   contact: Contact = new Contact();
+  reportURL: string = 'http://localhost/appcontrollers/report.php';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private toastCtrl: ToastController,
+    private http: Http
+  ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactPage');
   }
 
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Thank you for your report',
+      duration: 3500,
+      position: 'top'
+    });
+
+    toast.onDidDismiss(() => {
+      this.navCtrl.setRoot(HomePage);
+    });
+
+    toast.present();
+  }
+
   contactForm(){
-    console.log(this.contact);
-    // TODO send http request
-    this.contact = new Contact();
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+    });
+    let options = new RequestOptions({method: RequestMethod.Post, headers: headers});
+    return this.http.post(
+      this.reportURL,
+      this.contact,
+      options
+    ).map(res => {
+        return res.text();
+      })
+      .subscribe(content => {
+        console.log(content);
+        this.presentToast();
+      });
   }
 
 }

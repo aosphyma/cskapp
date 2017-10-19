@@ -42,37 +42,10 @@
           <ion-textarea [(ngModel)]="gallery.description" name="description"></ion-textarea>
         </ion-item>
         <ion-item>
-          <input type="file">
+          <input type="file" name="file" (change)="fileEvent($event)" required>
         </ion-item>
         <ion-item>
           <button type="submit" ion-button large block>Uplaod File</button>
-        </ion-item>
-      </ion-list>
-    </form>
-    <!--------------------------------------------------------------------------------------------------------------->
-    <form>
-      <ion-list>
-        <ion-buttons>
-          <button ion-button icon-left (click)="presentActionSheet()">
-            <ion-icon name="camera"></ion-icon>
-            Select Image
-          </button>
-        </ion-buttons>
-        <ion-item>
-          <ion-label floating>
-            Enter Description
-          </ion-label>
-          <ion-textarea></ion-textarea>
-        </ion-item>
-        <ion-item>
-          <ion-label stacked> file</ion-label>
-          <ion-input type="file"></ion-input>
-        </ion-item>
-        <ion-item>
-          <button ion-button icon-right (click)="uploadImage()" [disabled]="lastImage === null" large block>
-            <ion-icon name="cloud-upload"></ion-icon>
-            Upload
-          </button>
         </ion-item>
       </ion-list>
     </form>

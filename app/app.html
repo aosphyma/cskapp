@@ -1,10 +1,10 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <ion-title (click)="openRootPage()" menuClose>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-
+<!--todo add metatags-->
   <ion-content>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">

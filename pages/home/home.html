@@ -16,49 +16,73 @@
 
   <!--<button ion-button secondary menuToggle>Toggle Menu</button>-->
   <ion-grid fixed>
+    <!--todo slider-->
     <slider [page]="home"></slider>
     <ion-row>
-      <ion-col>
-        <cskarticle (clickgoToPage)="goToPage($event, 'academy', 'Article')"></cskarticle>
+      <ion-col col-12 col-sm-12 col-md-6 col-lg-6>
+        <ion-row *ngFor="let as0 of articleSet0">
+          <ion-card padding>
+            <ion-card-header id="{{as0.category}}" (click)="gotoReadPage(as0.category)">
+              <ion-card-title>
+                {{ as0.category }}
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-row>
+                <ion-col>
+                  <h2 style="text-align: center;">
+                    {{ as0.title }}
+                  </h2>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                {{ as0.s_description }}
+              </ion-row>
+            </ion-card-content>
+            <ion-row>
+              <ion-col col-9></ion-col>
+              <ion-col col-3>
+                <button ion-button icon-left clear small (click)="gotoReadPage(as0.category)">
+                  <ion-icon name="link"></ion-icon>
+                  <div>Read More...</div>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-row>
       </ion-col>
-      <ion-col>
-        <cskarticle></cskarticle>
-      </ion-col>
-      <ion-col>
-        <cskarticle></cskarticle>
-      </ion-col>
-      <!--<ion-col>-->
-      <!--<cskarticle></cskarticle>-->
-      <!--</ion-col>-->
-    </ion-row>
-    <ion-row>
-      <ion-col *ngFor="let article of articles">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>
-              {{ article.title }}
-            </ion-card-title>
+      <ion-col col-12 col-sm-12 col-md-6 col-lg-6>
+        <ion-row *ngFor="let as1 of articleSet1">
+          <ion-card padding>
+            <ion-card-header id="{{as1.category}}" (click)="gotoReadPage(as1.category)">
+              <ion-card-title>
+                {{ as1.category }}
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-row>
+                <ion-col>
+                  <h2 style="text-align: center;">
+                    {{ as1.title }}
+                  </h2>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                {{ as1.s_description }}
+              </ion-row>
+            </ion-card-content>
             <ion-row>
-              {{ article.subtitle }}
+              <ion-col col-9></ion-col>
+              <ion-col col-3>
+                <button ion-button icon-left clear small (click)="gotoReadPage(as1.category)">
+                  <ion-icon name="link"></ion-icon>
+                  <div>Read More...</div>
+                </button>
+              </ion-col>
             </ion-row>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-row>
-              {{ article.filepath }}
-            </ion-row>
-            <ion-row>
-              {{ article.url }}
-            </ion-row>
-            <ion-row>
-              {{ article.s_description }}
-            </ion-row>
-            <ion-row>
-              {{ article.l_description }}
-            </ion-row>
-          </ion-card-content>
-        </ion-card>
+          </ion-card>
+        </ion-row>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-<cskfooter></cskfooter>

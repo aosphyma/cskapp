@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { AboutPage } from '../pages/about/about';
 import { AcademyPage } from '../pages/academy/academy';
 import { ContactPage } from '../pages/contact/contact';
@@ -30,16 +29,15 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
+      { title: 'Start', component: HomePage },
       { title: 'Academy', component: AcademyPage },
       { title: 'Culture', component: CulturePage },
       { title: 'Sport', component: SportPage },
       { title: 'Gallery', component: GalleryPage },
       { title: 'Informations', component: InfoPage },
+      { title: 'About Us', component: AboutPage },
       { title: 'Contact', component: ContactPage },
-      { title: 'About', component: AboutPage },
-      { title: 'Admin Panel', component: AdminPage },
-      { title: 'List', component: ListPage }
+      // { title: 'Admin Panel', component: AdminPage }
     ];
 
   }
@@ -53,30 +51,13 @@ export class MyApp {
     });
   }
 
+  openRootPage(){
+    this.nav.setRoot(this.rootPage);
+  }
+
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
-  }
-
-  // ionViewDidLoad(){
-  //   if(document.body.clientWidth > 767) {
-  //     let menu_content = document.querySelectorAll('ion-nav')[0].className + " menu-content-open";
-  //     let menu = document.querySelectorAll('ion-menu')[0].className + " show-menu";
-  //     document.querySelectorAll('ion-menu')[0].className = menu;
-  //     document.querySelectorAll('ion-nav')[0].className = menu_content;
-  //   }
-  //   else{
-  //     console.log('shorter');
-  //   }
-  // }
-  ionViewDidEnter(){
-    if(document.body.clientWidth > 767) {
-      document.querySelectorAll('ion-menu')[0].classList.add('show-menu');
-      document.querySelectorAll('ion-nav')[0].classList.add('menu-content-open');
-    }
-    else{
-      console.log('shorter');
-    }
   }
 }

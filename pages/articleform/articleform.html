@@ -27,7 +27,7 @@
         </ion-item>
         <ion-item>
           <ion-label floating> Title </ion-label>
-          <ion-input type="text" name="title" [(ngModel)]="article.title"></ion-input>
+          <ion-input type="text" name="title" [(ngModel)]="article.title" required></ion-input>
         </ion-item><ion-item>
         <ion-label floating> Subtitle </ion-label>
         <ion-input type="text" name="subtitle" [(ngModel)]="article.subtitle"></ion-input>
@@ -38,7 +38,7 @@
         </ion-item>
         <ion-item>
           <ion-label floating> Long description </ion-label>
-          <ion-textarea name="ld" [(ngModel)]="article.ld"></ion-textarea>
+          <ion-textarea name="ld" [(ngModel)]="article.ld" required></ion-textarea>
         </ion-item>
         <ion-item>
           <ion-label floating> url </ion-label>
@@ -49,10 +49,11 @@
           <!--<ion-input type="file" name="file" [(ngModel)]="article.file"><input type="file"></ion-input>-->
         <!--</ion-item>-->
         <ion-item>
-          <input type="file" name="file" [(ngModel)]="article.file">
+          <!--<input type="file" name="file" [(ngModel)]="article.file" (change)="fileEvent($event)">-->
+          <input type="file" name="file" (change)="fileEvent($event)">
         </ion-item>
         <ion-item>
-          <button ion-button type="submit" large block> Create </button>
+          <button ion-button type="submit" large block> Create Article </button>
         </ion-item>
       </ion-list>
     </form>
