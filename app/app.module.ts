@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { AboutPage } from '../pages/about/about';
 import { AcademyPage } from '../pages/academy/academy';
 import { ContactPage } from '../pages/contact/contact';
@@ -22,7 +21,6 @@ import { SignupformPage } from '../pages/signupform/signupform';
 import { GaleryformPage } from '../pages/galeryform/galeryform';
 
 
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SliderComponent } from '../components/slider/slider';
@@ -31,19 +29,32 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule/*, AngularFireAuthProvider*/ } from 'angularfire2/auth';
 import { CskarticleComponent } from '../components/cskarticle/cskarticle';
-import { CskfooterComponent } from '../components/cskfooter/cskfooter';
 import { TestdirectiveDirective } from '../directives/testdirective/testdirective';
-// import { assign } from "rxjs/util/assign";
 
 import { IonicStorageModule } from '@ionic/storage';
 
 import { File } from '@ionic-native/file';
 import { Transfer } from '@ionic-native/transfer';
-import {FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer';
+import {FileTransfer} from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 
-import { HttpModule } from '@angular/http'
+import { HttpModule, Http } from '@angular/http'
+import { HttpClient } from '@angular/common/http';
+
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { CavidComponent } from '../components/cavid/cavid';
+import { CalinkComponent } from '../components/calink/calink';
+import { CabothComponent } from '../components/caboth/caboth';
+import { CaallComponent } from '../components/caall/caall';
+
+
+
+export function createTranslateLoader(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
+}
+
 
 
 const config = {
@@ -68,7 +79,6 @@ const config = {
     InfoPage,
     ContactPage,
     AboutPage,
-    ListPage,
     TabsPage,
     AdminPage,
     ArticleformPage,
@@ -77,8 +87,11 @@ const config = {
     GaleryformPage,
     SliderComponent,
     CskarticleComponent,
-    CskfooterComponent,
-    TestdirectiveDirective
+    TestdirectiveDirective,
+    CavidComponent,
+    CalinkComponent,
+    CabothComponent,
+    CaallComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +100,14 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    HttpModule
+    HttpModule,
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -102,7 +122,6 @@ const config = {
     InfoPage,
     ContactPage,
     AboutPage,
-    ListPage,
     TabsPage,
     AdminPage,
     ArticleformPage,

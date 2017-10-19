@@ -1,22 +1,41 @@
 <!-- Generated template for the CskarticleComponent component -->
-<ion-row align-items-start justify-content-center>
-  <ion-col col-sm-12 col-md-6 col-lg-6 *ngFor="let article of page">
-    <ion-col>
+<!--<ion-row align-items-start justify-content-center>-->
+<ion-row align-items-start>
+  <ion-col col-12 col-sm-12 col-md-6 col-lg-6>
+    <ion-row *ngFor="let ds0 of col0">
       <ion-card padding>
-
         <ion-card-title>
-          <h1> {{ article.title }} </h1>
-          <h6> {{ article.timestamp }}</h6>
+          <h1> {{ ds0.title }} </h1>
+          <h6> {{ ds0.timestamp }}</h6>
         </ion-card-title>
 
         <ion-row>
-          <img src="{{ article.filepath }}">
+          <img src="{{ ds0.filepath }}">
         </ion-row>
 
         <ion-card-content>
-          <p text-justify>{{ article.l_description }}</p>
+          <p text-justify>{{ ds0.l_description }}</p>
         </ion-card-content>
       </ion-card>
-    </ion-col>
+    </ion-row>
+  </ion-col>
+  <ion-col col-12 col-sm-12 col-md-6 col-lg-6>
+    <ion-row *ngFor="let ds1 of col1">
+      <ion-card padding>
+        <ion-card-title>
+          <h1> {{ ds1.title }} </h1>
+          <h6> {{ ds1.timestamp }}</h6>
+        </ion-card-title>
+
+        <ion-row>
+          <img src="{{ ds1.filepath }}">
+        </ion-row>
+
+        <ion-card-content>
+          <p text-justify>{{ ds1.l_description }}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+
   </ion-col>
 </ion-row>

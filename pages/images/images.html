@@ -17,16 +17,44 @@
 
 
 <ion-content padding class="card-background-page">
-
-  <ion-grid fixed>
+  <ion-grid>
     <ion-row align-items-start justify-content-center>
-      <ion-col col-sm-12 col-md-6 col-lg-3 *ngFor="let image of images">
+    <ion-col col-12 col-sm-12 col-md-6 col-lg-3>
+      <ion-row *ngFor="let is of imageSet">
         <ion-card>
-          <img src="http://{{ image.filepath }}">
-          <div class="card-title">{{ image.title }}</div>
-          <div class="card-subtitle">{{ image.description }}</div>
+          <img src="http://{{ is.filepath }}">
+          <div class="card-title">{{ is.title }}</div>
+          <div class="card-subtitle">{{ is.description }}</div>
         </ion-card>
-      </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col col-12 col-sm-12 col-md-6 col-lg-3>
+      <ion-row *ngFor="let is1 of imageSet1">
+        <ion-card>
+          <img src="http://{{ is1.filepath }}">
+          <div class="card-title">{{ is1.title }}</div>
+          <div class="card-subtitle">{{ is1.description }}</div>
+        </ion-card>
+      </ion-row>
+    </ion-col>
+    <ion-col col-12 col-sm-12 col-md-6 col-lg-3>
+      <ion-row *ngFor="let is2 of imageSet2">
+        <ion-card>
+          <img src="http://{{ is2.filepath }}">
+          <div class="card-title">{{ is2.title }}</div>
+          <div class="card-subtitle">{{ is2.description }}</div>
+        </ion-card>
+      </ion-row>
+    </ion-col>
+    <ion-col col-12 col-sm-12 col-md-6 col-lg-3>
+      <ion-row *ngFor="let is3 of imageSet3">
+        <ion-card>
+          <img src="http://{{ is3.filepath }}">
+          <div class="card-title">{{ is3.title }}</div>
+          <div class="card-subtitle">{{ is3.description }}</div>
+        </ion-card>
+      </ion-row>
+    </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

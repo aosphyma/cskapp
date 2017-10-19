@@ -17,29 +17,31 @@
 
 
 <ion-content padding>
-  <ion-grid fixed>
-    <ion-row>
-      <!--<ion-col col-12 col-sm-9 col-md-6 col-lg-6 col-xl-3>-->
-      <ion-col>
-        Contact datas of the CSK come here
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <!--<ion-col col-12 col-sm-9 col-md-6 col-lg-6 col-xl-3>-->
-      <ion-col>
+  <ion-grid >
+    <!--<ion-row align-items-start justify-content-center>-->
+      <!--<ion-col col-12 col-sm-9 col-md-6 col-lg-8>-->
+        <!--Contact datas of the CSK come here-->
+      <!--</ion-col>-->
+    <!--</ion-row>-->
+    <ion-row align-items-center justify-content-center>
+      <ion-col col-12 col-sm-10 col-md-8 col-lg-6>
         <form (ngSubmit)="contactForm()">
           <ion-list>
             <ion-item>
               <ion-label floating> Name</ion-label>
-              <ion-input type="text" name="name" [(ngModel)]="contact.name"></ion-input>
+              <ion-input type="text" name="name" [(ngModel)]="contact.name" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label floating>Email</ion-label>
-              <ion-input type="email" name="email" [(ngModel)]="contact.email"></ion-input>
+              <ion-input type="email" name="email" [(ngModel)]="contact.email" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Subject</ion-label>
+              <ion-input type="text" name="subject" [(ngModel)]="contact.subject" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label floating>Message</ion-label>
-              <ion-textarea name="message" [(ngModel)]="contact.message"></ion-textarea>
+              <ion-textarea name="message" [(ngModel)]="contact.message" required></ion-textarea>
             </ion-item>
             <ion-item>
               <button ion-button type="submit" large block>Send</button>

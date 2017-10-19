@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
+
 
 /**
  * Generated class for the AboutPage page.
@@ -14,11 +16,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public translate: TranslateService) {
+    translate.setDefaultLang('en');
+  }
+
+  changeLanguage(l:string){
+    switch(l){
+      case "English":
+        this.translate.use('en');
+        break;
+      case "Deutsch":
+        this.translate.use('de');
+        break;
+      case "Français":
+        this.translate.use('fr');
+        break;
+    }
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AboutPage');
+
   }
 
 }

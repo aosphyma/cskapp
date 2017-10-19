@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 
-// import {HomePage} from '../home/home';
+import {HomePage} from '../home/home';
 import {Http, RequestMethod, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/Rx';
 
@@ -44,23 +44,24 @@ export class ArticleformPage {
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad ArticleformPage');
     this.viewCtrl.setBackButtonText(this.navParams.get('from'));
   }
 
   fileEvent(fileInput: any) {
     this.formData = new FormData();
     this.formData.append('file', fileInput.target.files[0]);
-    console.log(this.formData.get('file'))
+    this.article.file = fileInput.target.files[0].name;
+    // console.log(this.formData.get('file'));
   }
 
   articleForm() {
-    if (this.formData.get('file') != null) {
-      this.fileUpload();
+    if (this.formData != null) {
+      if (this.formData.get('file') != null) {
+        this.fileUpload();
+      }
     }
     let headers = new Headers({
       'Content-Type': 'application/json',
-      // 'Content-type': 'multipart/form-data'
     });
     let options = new RequestOptions({method: RequestMethod.Post, headers: headers});
     return this.http.post(
@@ -71,7 +72,7 @@ export class ArticleformPage {
         return res.json();
       })
       .subscribe(article => {
-        console.log(article);
+        this.navCtrl.setRoot(HomePage);
       });
   }
 
@@ -85,7 +86,6 @@ export class ArticleformPage {
         return res;
       })
       .subscribe(uploadedStatus => {
-        console.log(uploadedStatus.text());
       });
   }
 
